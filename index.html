@@ -1,38 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>P.U.R.E. – Purge Unacceptable Rhetoric Engine</title>
   <style>
     body {
-      background: #0e0e0e;
-      color: #ffffff;
       font-family: monospace;
+      background-color: #0b0b0b;
+      color: #fff;
       text-align: center;
       padding: 50px;
     }
-    h1 {
-      color: #ff003c;
-      font-size: 3em;
+    .glow {
+      color: #ff2e63;
+      text-shadow:
+        0 0 5px #ff2e63,
+        0 0 10px #ff2e63,
+        0 0 20px #ff2e63,
+        0 0 40px #ff2e63;
+      font-weight: bold;
+      font-size: 4rem;
+      letter-spacing: 0.3em;
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: normal;
+      color: #ff2e63;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+    p {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      line-height: 1.5;
     }
     .btn {
-      display: inline-block;
-      padding: 12px 24px;
       margin-top: 30px;
-      background-color: #ff003c;
+      padding: 12px 24px;
+      background-color: #ff2e63;
       color: white;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 10px;
+      display: inline-block;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 0 0 #ff2e63;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #d92655;
+      animation: pulseGlow 1.5s infinite alternate;
+      transform: scale(1.1);
+    }
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 5px #ff2e63, 0 0 10px #ff2e63;
+      }
+      100% {
+        box-shadow: 0 0 20px #ff2e63, 0 0 40px #ff2e63;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>P.U.R.E.</h1>
+  <h1 class="glow">P.U.R.E.</h1>
   <h2>Purge Unacceptable Rhetoric Engine</h2>
   <p>
-    The most aggressive Roblox moderation script ever created.<br>
-    One bad word and you're kicked, logged, and exposed.
+    An aggressive, zero-tolerance moderation tool for Roblox games and communities.<br/>
+    P.U.R.E. automatically detects and kicks users who use explicit or banned language – and logs it instantly to your Discord.
   </p>
-  <a class="btn" href="https://github.com/YOURUSERNAME/pure-script" target="_blank">Get the Script</a>
+  <a class="btn" href="https://github.com/yourname/pure" target="_blank">Get the Script</a>
 </body>
 </html>
