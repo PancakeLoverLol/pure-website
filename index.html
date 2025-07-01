@@ -4,66 +4,106 @@
   <meta charset="UTF-8" />
   <title>P.U.R.E. – Purge Unacceptable Rhetoric Engine</title>
   <style>
+    :root {
+      --main-color: #ff2e63;
+      --bg-dark: #0b0b0b;
+      --bg-light: #ffffff;
+      --text-dark: #ffffff;
+      --text-light: #000000;
+    }
+
     body {
       font-family: monospace;
-      background-color: #0b0b0b;
-      color: #fff;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
       text-align: center;
       padding: 50px;
+      transition: background 0.3s, color 0.3s;
     }
+
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
     .glow {
-      color: #ff2e63;
+      color: var(--main-color);
       text-shadow:
-        0 0 5px #ff2e63,
-        0 0 10px #ff2e63,
-        0 0 20px #ff2e63,
-        0 0 40px #ff2e63;
+        0 0 5px var(--main-color),
+        0 0 10px var(--main-color),
+        0 0 20px var(--main-color),
+        0 0 40px var(--main-color);
       font-weight: bold;
       font-size: 4rem;
       letter-spacing: 0.3em;
     }
+
     h2 {
       margin-top: 0;
       font-weight: normal;
-      color: #ff2e63;
+      color: var(--main-color);
       font-size: 1.8rem;
       text-transform: uppercase;
     }
+
     p {
       max-width: 700px;
       margin: 20px auto;
       font-size: 1.2rem;
       line-height: 1.5;
     }
+
     .btn {
       margin-top: 30px;
       padding: 12px 24px;
-      background-color: #ff2e63;
+      background-color: var(--main-color);
       color: white;
       text-decoration: none;
       font-weight: bold;
       border-radius: 10px;
       display: inline-block;
       transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 0 0 #ff2e63;
+      box-shadow: 0 0 0 var(--main-color);
       cursor: pointer;
     }
+
     .btn:hover {
       background-color: #d92655;
       animation: pulseGlow 1.5s infinite alternate;
       transform: scale(1.1);
     }
+
     @keyframes pulseGlow {
       0% {
-        box-shadow: 0 0 5px #ff2e63, 0 0 10px #ff2e63;
+        box-shadow: 0 0 5px var(--main-color), 0 0 10px var(--main-color);
       }
       100% {
-        box-shadow: 0 0 20px #ff2e63, 0 0 40px #ff2e63;
+        box-shadow: 0 0 20px var(--main-color), 0 0 40px var(--main-color);
       }
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .toggle-theme:hover {
+      background-color: #d92655;
     }
   </style>
 </head>
 <body>
+  <button class="toggle-theme" onclick="toggleTheme()">🌓 Toggle Theme</button>
+
   <h1 class="glow">P.U.R.E.</h1>
   <h2>Purge Unacceptable Rhetoric Engine</h2>
   <p>
@@ -71,5 +111,20 @@
     P.U.R.E. automatically detects and kicks users who use explicit or banned language – and logs it instantly to your Discord.
   </p>
   <a class="btn" href="https://pancakeloverlol.github.io/pure/" target="_blank">Get the Script</a>
+
+  <script>
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      const newTheme = document.body.classList.contains("light") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+    }
+  </script>
 </body>
 </html>
+
