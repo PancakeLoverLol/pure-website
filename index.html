@@ -44,6 +44,7 @@
       color: var(--main-color);
       font-size: 1.8rem;
       text-transform: uppercase;
+      min-height: 2.2rem; /* to prevent layout jump while typing */
     }
 
     p {
@@ -105,7 +106,7 @@
   <button class="toggle-theme" onclick="toggleTheme()">🌓 Toggle Theme</button>
 
   <h1 class="glow">P.U.R.E.</h1>
-  <h2>Purge Unacceptable Rhetoric Engine</h2>
+  <h2><span id="typing"></span></h2>
   <p>
     An aggressive, zero-tolerance moderation tool for Roblox games and communities.<br/>
     P.U.R.E. automatically detects and kicks users who use explicit or banned language – and logs it instantly to your Discord.
@@ -113,12 +114,32 @@
   <a class="btn" href="https://pancakeloverlol.github.io/pure/" target="_blank">Get the Script</a>
 
   <script>
-    // Load saved theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      document.body.classList.add("light");
+    // Typing animation
+    const text = "Purge Unacceptable Rhetoric Engine";
+    const typingSpeed = 100; // ms per char
+    let i = 0;
+    const typingElement = document.getElementById("typing");
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, typingSpeed);
+      }
     }
 
+    window.onload = () => {
+      typingElement.textContent = "";
+      typeWriter();
+
+      // Load saved theme
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    };
+
+    // Theme toggle
     function toggleTheme() {
       document.body.classList.toggle("light");
       const newTheme = document.body.classList.contains("light") ? "light" : "dark";
@@ -127,4 +148,5 @@
   </script>
 </body>
 </html>
+
 
