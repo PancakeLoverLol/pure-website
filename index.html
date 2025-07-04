@@ -44,7 +44,7 @@
       color: var(--main-color);
       font-size: 1.8rem;
       text-transform: uppercase;
-      min-height: 2.2rem; /* to prevent layout jump while typing */
+      min-height: 2.2rem;
     }
 
     p {
@@ -100,10 +100,49 @@
     .toggle-theme:hover {
       background-color: #d92655;
     }
+
+    /* FAQ Styles */
+    .faq {
+      max-width: 800px;
+      margin: 60px auto 0;
+      text-align: left;
+    }
+
+    .faq h2 {
+      color: var(--main-color);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .faq-item {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid var(--main-color);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    body.light .faq-item {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-item h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--main-color);
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
-  <button class="toggle-theme" onclick="toggleTheme()">🌓 Toggle Theme</button>
+  <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
 
   <h1 class="glow">P.U.R.E.</h1>
   <h2><span id="typing"></span></h2>
@@ -113,10 +152,35 @@
   </p>
   <a class="btn" href="https://pancakeloverlol.github.io/pure/" target="_blank">Get the Script</a>
 
+  <!-- FAQ Section -->
+  <div class="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <h3>Does this get you banned?</h3>
+      <p>No, it only kicks users. We are working on a version that may include optional ban buttons.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I change the words?</h3>
+      <p>Yes, and it is highly recommended to customize the word list based on your community's needs.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does it work in private games?</h3>
+      <p>Yes. P.U.R.E. works in both private and public games.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I whitelist users?</h3>
+      <p>Yes, you can script that functionality yourself. A built-in whitelist system is planned.</p>
+    </div>
+  </div>
+
   <script>
     // Typing animation
     const text = "Purge Unacceptable Rhetoric Engine";
-    const typingSpeed = 100; // ms per char
+    const typingSpeed = 100;
     let i = 0;
     const typingElement = document.getElementById("typing");
 
